@@ -3,7 +3,8 @@ import useBoredData from "./useBoredData";
 const useActivities = (boredQuery) =>
   useBoredData(
     {
-      participants: boredQuery.participants,
+      participants:
+        boredQuery.participants === undefined ? 1 : boredQuery.participants,
       ...(boredQuery.type && { type: boredQuery.type }), //optionally adding prop
       ...(boredQuery.accessibility && { accessibility: 0 }),
       ...(boredQuery.price && { price: 0 }),
