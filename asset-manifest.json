@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Bored/static/css/main.ea94d139.css",
+    "main.js": "/Bored/static/js/main.e3a1703f.js",
+    "static/js/787.56ae01aa.chunk.js": "/Bored/static/js/787.56ae01aa.chunk.js",
+    "static/media/quiny.ttf": "/Bored/static/media/quiny.76251f6a233aa9ad61ca.ttf",
+    "index.html": "/Bored/index.html",
+    "main.ea94d139.css.map": "/Bored/static/css/main.ea94d139.css.map",
+    "main.e3a1703f.js.map": "/Bored/static/js/main.e3a1703f.js.map",
+    "787.56ae01aa.chunk.js.map": "/Bored/static/js/787.56ae01aa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea94d139.css",
+    "static/js/main.e3a1703f.js"
+  ]
+}
