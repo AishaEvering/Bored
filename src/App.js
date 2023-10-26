@@ -52,6 +52,7 @@ export default function App() {
             error={error}
             data={data}
             onNextActivity={handleReset}
+            isLoading={isLoading}
           ></Activity>
         )}
         {pageView === pageViewOptions.form && (

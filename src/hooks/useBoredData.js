@@ -25,7 +25,7 @@ const useBoredData = (params, deps) => {
           setError(err.message);
           setLoading(false);
         });
-      return () => controller.abort();
+      return () => controller.abort(); //kill the call in the cleanup
     },
     deps ? [...deps] : [] //only call when deps changes or when moounts
   );
