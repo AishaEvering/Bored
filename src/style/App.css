@@ -15,7 +15,21 @@
   font-size: calc(200px + 2vmin); 
   color: #FB7E38;
   font-family: quiny;
-  letter-spacing: 3px;
+}
+
+.App-header-title{
+  padding: 0px;
+  margin-bottom: -50px;
+  letter-spacing: 10px;
+}
+
+.App-header-quote{
+  margin-bottom: 50px;
+  opacity: 0.5;
+  width: 25%;
+  font-family: "Rumi";
+  color:#fefefe;
+  font-size: calc(15px); 
 }
 
 @font-face {
@@ -45,6 +59,13 @@
   color: red;
   font-weight:bold;
 }
+
+.form-section{
+  display:flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center; 
+} 
 
 form {
   display: flex;
@@ -115,13 +136,6 @@ input[type="checkbox"] {
   margin-right: 10px;
 }
 
- .form-section{
-  display:flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center; 
-} 
-
 button {
   min-width: 100%;
   cursor: pointer;
@@ -154,7 +168,7 @@ section{
   display: flex;
   position: relative;
   width: 100%;
-  height: 12vh;
+  height: 10.5vh;
   background: #787131;
   overflow: hidden;
 }

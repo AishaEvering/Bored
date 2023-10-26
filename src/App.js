@@ -3,7 +3,6 @@ import Question from "./components/questionnaire";
 import "./style/App.css";
 import useActivities from "./hooks/useActivities";
 import Activity from "./components/activity";
-import useQuotes from "./hooks/useQuotes";
 
 export const pageViewOptions = {
   form: "form",
@@ -21,9 +20,6 @@ export default function App() {
   const [boredQuery, setBoredQuery] = useState({});
   const [pageView, setPageView] = useState(pageViewOptions.form);
   const { data, error, isLoading } = useActivities(boredQuery);
-  const { quote, quoteError, quoteIsLoading } = useQuotes();
-
-  console.log(quote);
 
   const handleSubmit = (event) => {
     setPageView(pageViewOptions.activity);
@@ -37,14 +33,19 @@ export default function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Bored?</header>
+      <header className="App-header">
+        <p className="App-header-title">Bored?</p>
+        <p className="App-header-quote">
+          You can't use up creativity. The more you use the more you have. Maya
+          Angelou
+        </p>
+      </header>
       <section>
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>
         <div className="wave wave3"></div>
         <div className="wave wave4"></div>
       </section>
-
       <div className="form-section">
         {pageView === pageViewOptions.activity && (
           <Activity
