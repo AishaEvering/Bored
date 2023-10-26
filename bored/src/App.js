@@ -1,6 +1,40 @@
+import { useState } from "react";
+import Question from "./components/questionnaire";
 import "./style/App.css";
+import useActivities from "./hooks/useActivities";
+import Activity from "./components/activity";
+import useQuotes from "./hooks/useQuotes";
 
-function App() {
+export const pageViewOptions = {
+  form: "form",
+  activity: "activity",
+};
+
+export const boredQuery = {
+  type: "",
+  participants: 1,
+  accessibility: false,
+  price: false,
+};
+
+export default function App() {
+  const [boredQuery, setBoredQuery] = useState({});
+  const [pageView, setPageView] = useState(pageViewOptions.form);
+  const { data, error, isLoading } = useActivities(boredQuery);
+  const { quote, quoteError, quoteIsLoading } = useQuotes();
+
+  console.log(quote);
+
+  const handleSubmit = (event) => {
+    setPageView(pageViewOptions.activity);
+    event.preventDefault();
+  };
+
+  const handleReset = (event) => {
+    setPageView(pageViewOptions.form);
+    event.preventDefault();
+  };
+
   return (
     <div className="App">
       <header className="App-header">Bored?</header>
@@ -10,11 +44,47 @@ function App() {
         <div className="wave wave3"></div>
         <div className="wave wave4"></div>
       </section>
+
       <div className="form-section">
-        <p>Questions and Results Go Here</p>
+        {pageView === pageViewOptions.activity && (
+          <Activity
+            error={error}
+            data={data}
+            onNextActivity={handleReset}
+          ></Activity>
+        )}
+        {pageView === pageViewOptions.form && (
+          <Question
+            error={error}
+            onSubmit={handleSubmit}
+            onActivityChanged={(e) => {
+              const activity = e.target.value;
+
+              if (activity !== "I don't know") {
+                setBoredQuery({
+                  ...boredQuery,
+                  type: activity.replace(" ", ""),
+                });
+              }
+            }}
+            onParticipantCountChanged={(e) => {
+              const participantCount = e.target.value;
+              setBoredQuery({ ...boredQuery, participants: participantCount });
+            }}
+            onPriceChanged={(e) => {
+              const priceChanged = e.target.checked;
+              setBoredQuery({ ...boredQuery, price: priceChanged });
+            }}
+            onAccessibilityChanged={(e) => {
+              const accessibilityChanged = e.target.checked;
+              setBoredQuery({
+                ...boredQuery,
+                accessibility: accessibilityChanged,
+              });
+            }}
+          />
+        )}
       </div>
     </div>
   );
 }
-
-export default App;
